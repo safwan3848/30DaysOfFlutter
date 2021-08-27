@@ -1,7 +1,9 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
 
+//import 'package:flutter/mate rial.dart';
 import 'package:flutter/material.dart';
 import 'package:tutorials/pages/login_page.dart';
+import 'package:tutorials/utils/routes.dart';
 import 'pages/home_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -22,14 +24,15 @@ class MyApp extends StatelessWidget {
 
         //primaryTextTheme: GoogleFonts.latoTextTheme()
       ),
+      debugShowCheckedModeBanner: false,
       // darkTheme: ThemeData(
       //   brightness: Brightness.dark,
       // ),
-      initialRoute: "/login",
+      initialRoute: "/",
       routes: {
         "/": (context) => LoginPage(),
-        "/home": (context) => HomePage(),
-        "/login": (context) => LoginPage(),
+      MyRoutes.homeRoute: (context) => HomePage(),
+      MyRoutes.loginRoute: (context) => LoginPage(),
       },
     );
   }
