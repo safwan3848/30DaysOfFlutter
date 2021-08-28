@@ -7,7 +7,6 @@ import 'package:tutorials/utils/routes.dart';
 import 'package:tutorials/widgets/themes.dart';
 import 'pages/home_page.dart';
 
-
 void main() {
   runApp(MyApp());
 }
