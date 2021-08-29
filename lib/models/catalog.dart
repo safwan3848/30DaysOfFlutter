@@ -1,10 +1,18 @@
-// ignore_for_file: unnecessary_null_comparison, unused_import
+// ignore_for_file: unnecessary_null_comparison, unused_import, null_closures
 
 import 'dart:convert';
 
 // ignore_for_file: empty_constructor_bodies
 class CatalogModel {
   static List<Item>? items;
+
+  //get item by id
+  static Item getById(int id) =>
+      items!.firstWhere((element) => element.id == id, orElse: null);
+
+  // get item by position
+
+  static Item getByPosition(int pos) => items![pos];
 }
 
 class Item {
