@@ -1,8 +1,11 @@
-// ignore_for_file: unused_field, unnecessary_getters_setters, unnecessary_null_comparison
+// ignore_for_file: unused_field, unnecessary_getters_setters, unnecessary_null_comparison, non_constant_identifier_names
 
 import 'package:tutorials/models/catalog.dart';
 
 class CartModel {
+  static final cartModel = CartModel._internal();
+  CartModel._internal();
+  factory CartModel() => cartModel;
   //catalog filed
   late CatalogModel _catalog;
 //collection of ids - store ids of each items

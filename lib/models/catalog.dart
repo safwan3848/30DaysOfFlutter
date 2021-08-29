@@ -4,6 +4,10 @@ import 'dart:convert';
 
 // ignore_for_file: empty_constructor_bodies
 class CatalogModel {
+
+  static final catModel = CatalogModel._internal();
+CatalogModel._internal();
+factory CatalogModel() => catModel;
   static List<Item>? items;
 
   //get item by id

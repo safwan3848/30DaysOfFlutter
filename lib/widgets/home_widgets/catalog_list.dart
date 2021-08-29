@@ -1,6 +1,7 @@
-// ignore_for_file: unnecessary_null_comparison, prefer_const_constructors, deprecated_member_use
+// ignore_for_file: unnecessary_null_comparison, prefer_const_constructors, deprecated_member_use, unused_local_variable, type_init_formals
 
 import 'package:flutter/material.dart';
+import 'package:tutorials/models/cart.dart';
 import 'package:tutorials/models/catalog.dart';
 import 'package:tutorials/pages/home_details_page.dart';
 import 'package:tutorials/widgets/home_widgets/catalog_image.dart';
@@ -62,22 +63,49 @@ class CatalogItem extends StatelessWidget {
               buttonPadding: EdgeInsets.zero,
               children: [
                 "\$${catalog.price}".text.bold.xl.make(),
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(
-                        context.theme.buttonColor,
-                      ),
-                      shape: MaterialStateProperty.all(
-                        StadiumBorder(),
-                      )),
-                  child: "Add to cart".text.make(),
-                )
+                //catalog:catalog add karna hai
+                _AddToCart(catalog)
               ],
             ).pOnly(right: 8.0)
           ],
         ))
       ],
     )).color(context.cardColor).roundedLg.square(150).make().py16();
+  }
+}
+
+class _AddToCart extends StatefulWidget {
+  final Item catalog;
+  const _AddToCart(
+    Item this.catalog, {
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  State<_AddToCart> createState() => _AddToCartState();
+}
+
+class _AddToCartState extends State<_AddToCart> {
+  bool isAdded = false;
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        isAdded = isAdded.toggle();
+        final _catalog = CatalogModel();
+        final _cart = CartModel();
+        _cart.catalog = _catalog;
+        _cart.add(widget.catalog);
+        setState(() {});
+      },
+      style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(
+            context.theme.buttonColor,
+          ),
+          shape: MaterialStateProperty.all(
+            StadiumBorder(),
+          )),
+      child: isAdded ? Icon(Icons.done) : "Add to cart".text.make(),
+    );
   }
 }
