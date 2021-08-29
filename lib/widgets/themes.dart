@@ -6,6 +6,7 @@ import 'package:velocity_x/velocity_x.dart';
 
 class MyTheme {
   static ThemeData lightTheme(BuildContext context) => ThemeData(
+      brightness: Brightness.light,
       primarySwatch: Colors.deepPurple,
       cardColor: Colors.white,
       buttonColor: darkBluishClor,
@@ -16,7 +17,10 @@ class MyTheme {
         color: Colors.white,
         elevation: 0.0,
         iconTheme: IconThemeData(color: Colors.black),
-        textTheme: Theme.of(context).textTheme,
+        textTheme: Theme.of(context).textTheme.copyWith(
+              headline6:
+                  context.textTheme.headline6!.copyWith(color: Colors.black),
+            ),
       ));
 
   static ThemeData darkTheme(BuildContext context) => ThemeData(
