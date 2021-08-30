@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tutorials/core/store.dart';
 import 'package:tutorials/models/catalog.dart';
 import 'package:tutorials/utils/routes.dart';
 import 'dart:convert';
@@ -12,6 +13,7 @@ import 'package:tutorials/widgets/home_widgets/catalog_list.dart';
 import 'package:tutorials/widgets/item_widget.dart';
 import 'package:tutorials/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:http/http.dart' as http;
 
 class HomePage extends StatefulWidget {
   @override
@@ -22,6 +24,7 @@ class _HomePageState extends State<HomePage> {
   final int days = 30;
 
   final String name = "safwan";
+
 
   @override
   void initState() {
@@ -43,18 +46,17 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final _cart = (VxState.store as MyStore).cart;
     return Scaffold(
         backgroundColor: context.canvasColor,
         floatingActionButton: FloatingActionButton(
-          onPressed: () =>
-            Navigator.pushNamed(context, MyRoutes.cartRoute),
-          
+          onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
           backgroundColor: context.theme.buttonColor,
           child: Icon(
             CupertinoIcons.cart,
             color: Colors.white,
           ),
-        ),
+        ).badge(size: 20, count: _cart.items.length, color: Vx.red500),
         body: SafeArea(
           child: Container(
             padding: Vx.m32,
