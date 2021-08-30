@@ -4,10 +4,6 @@ import 'dart:convert';
 
 // ignore_for_file: empty_constructor_bodies
 class CatalogModel {
-
-  static final catModel = CatalogModel._internal();
-CatalogModel._internal();
-factory CatalogModel() => catModel;
   static List<Item>? items;
 
   //get item by id
@@ -65,7 +61,7 @@ class Item {
   }
 
   factory Item.fromMap(Map<String, dynamic> map) {
-    //if (map == null) return null;
+    if (map == null) {}
     return Item(
       id: map['id'],
       name: map['name'],

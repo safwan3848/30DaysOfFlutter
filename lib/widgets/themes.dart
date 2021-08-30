@@ -21,7 +21,7 @@ class MyTheme {
                 headline6:
                     context.textTheme.headline6!.copyWith(color: Colors.black),
               ),
-        ),
+        )
       );
 
   static ThemeData darkTheme(BuildContext context) => ThemeData(
@@ -39,7 +39,7 @@ class MyTheme {
                 headline6:
                     context.textTheme.headline6!.copyWith(color: Colors.white),
               ),
-        ),
+        )
       );
 
   //colors

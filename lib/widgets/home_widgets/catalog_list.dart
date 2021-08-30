@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_null_comparison, prefer_const_constructors, deprecated_member_use, unused_local_variable, type_init_formals, non_constant_identifier_names
+// ignore_for_file: unnecessary_null_comparison, prefer_const_constructors, deprecated_member_use, unused_local_variable, type_init_formals, non_constant_identifier_names, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
 import 'package:tutorials/models/catalog.dart';
@@ -22,7 +22,7 @@ class CatalogList extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) => HomeDetailPage(
-                catalog: catalog,
+                catalog: catalog
               ),
             ),
           ),
@@ -64,13 +64,14 @@ class CatalogItem extends StatelessWidget {
               children: [
                 "\$${catalog.price}".text.bold.xl.make(),
                 //catalog:catalog add karna hai
-                AddToCart(catalog)
+                AddToCart(catalog: catalog, key: null,)
               ],
             ).pOnly(right: 8.0)
           ],
         ))
       ],
-    )).color(context.cardColor).roundedLg.square(150).make().py16();
+    ),
+    ).color(context.cardColor).roundedLg.square(150).make().py16();
   }
 }
 

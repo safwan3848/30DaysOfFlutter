@@ -1,11 +1,10 @@
-// ignore_for_file: unused_field, unnecessary_getters_setters, unnecessary_null_comparison, non_constant_identifier_names
+// ignore_for_file: unused_field, unnecessary_getters_setters, unnecessary_null_comparison, non_constant_identifier_names, override_on_non_overriding_member, prefer_typing_uninitialized_variables
 
+import 'package:tutorials/core/store.dart';
 import 'package:tutorials/models/catalog.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class CartModel {
-  static final cartModel = CartModel._internal();
-  CartModel._internal();
-  factory CartModel() => cartModel;
   //catalog filed
   late CatalogModel _catalog;
 //collection of ids - store ids of each items
@@ -25,15 +24,20 @@ class CartModel {
   num get totalPrice =>
       items.fold(0, (total, current) => total + current.price);
 
-//add item
-
-  void add(Item item) {
-    _itemIds.add(item.id);
-  }
-
 //removce item
 
   void remove(Item item) {
     _itemIds.remove(item.id);
+  }
+}
+
+class AddMutation extends VxMutation<MyStore> {
+  final Item item;
+
+  AddMutation(this.item);
+  @override
+  perform() {
+    //var store;
+    store!.cart._itemIds.add(item.id);
   }
 }

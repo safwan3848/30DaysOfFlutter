@@ -1,12 +1,12 @@
-// ignore_for_file: prefer_const_constructors, deprecated_member_use, unused_field, unused_local_variable
+// ignore_for_file: prefer_const_constructors, deprecated_member_use, unused_field, unused_local_variable, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+import 'package:tutorials/core/store.dart';
 import 'package:tutorials/models/cart.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class CartPage extends StatelessWidget {
-  const CartPage({Key? key}) : super(key: key);
 
+class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,11 +30,11 @@ class CartPage extends StatelessWidget {
 }
 
 class _CartTotal extends StatelessWidget {
-  const _CartTotal({Key? key}) : super(key: key);
+ 
 
   @override
   Widget build(BuildContext context) {
-    final _cart = CartModel();
+  final CartModel _cart = (VxState.store as MyStore).cart;
     return SizedBox(
       height: 200,
       child: Row(
@@ -63,17 +63,11 @@ class _CartTotal extends StatelessWidget {
   }
 }
 
-class _CartList extends StatefulWidget {
-  const _CartList({Key? key}) : super(key: key);
-
-  @override
-  __CartListState createState() => __CartListState();
-}
-
-class __CartListState extends State<_CartList> {
-  final _cart = CartModel();
+class _CartList extends StatelessWidget {
+  //final _cart = CartModel();
   @override
   Widget build(BuildContext context) {
+    final CartModel _cart = (VxState.store as MyStore).cart;
     return _cart.items.isEmpty
         ? "Noting to show".text.xl3.makeCentered()
         : ListView.builder(
@@ -84,7 +78,6 @@ class __CartListState extends State<_CartList> {
                 icon: Icon(Icons.remove_circle_outline),
                 onPressed: () {
                   _cart.remove(_cart.items[index]);
-                  setState(() {});
                 },
               ),
               title: _cart.items[index].name.text.make(),

@@ -1,10 +1,10 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class CatalogHeader extends StatelessWidget {
-  const CatalogHeader({Key? key}) : super(key: key);
+  //const CatalogHeader({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

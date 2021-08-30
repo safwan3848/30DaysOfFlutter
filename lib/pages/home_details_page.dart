@@ -23,7 +23,8 @@ class HomeDetailPage extends StatelessWidget {
           buttonPadding: EdgeInsets.zero,
           children: [
             "\$${catalog.price}".text.bold.xl4.red800.make(),
-            AddToCart(catalog).wh(120, 50)
+            AddToCart(catalog: catalog)
+            .wh(120, 50)
           ],
         ).p32(),
       ),
@@ -53,6 +54,7 @@ class HomeDetailPage extends StatelessWidget {
                     10.heightBox,
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dolor erat, ultrices ac tincidunt ac, convallis eu eros."
                         .text
+                        //.textStyle(context.captionStyle)
                         .make()
                         .p16()
                   ],
