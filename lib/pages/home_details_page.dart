@@ -23,7 +23,7 @@ class HomeDetailPage extends StatelessWidget {
           buttonPadding: EdgeInsets.zero,
           children: [
             "\$${catalog.price}".text.bold.xl4.red800.make(),
-            AddToCart(catalog: catalog)
+            AddToCart(catalog: catalog,)
             .wh(120, 50)
           ],
         ).p32(),

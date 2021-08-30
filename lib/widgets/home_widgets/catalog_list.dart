@@ -41,17 +41,15 @@ class CatalogItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return VxBox(
-        child: Row(
-      children: [
-        Hero(
-          tag: Key(catalog.id.toString()),
-          child: CatalogImage(
-            image: catalog.image,
-          ),
+    var children2 = [
+      Hero(
+        tag: Key(catalog.id.toString()),
+        child: CatalogImage(
+          image: catalog.image,
         ),
-        Expanded(
-            child: Column(
+      ),
+      Expanded(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -63,15 +61,22 @@ class CatalogItem extends StatelessWidget {
               buttonPadding: EdgeInsets.zero,
               children: [
                 "\$${catalog.price}".text.bold.xl.make(),
-                //catalog:catalog add karna hai
                 AddToCart(catalog: catalog, key: null,)
               ],
             ).pOnly(right: 8.0)
           ],
-        ))
-      ],
-    ),
-    ).color(context.cardColor).roundedLg.square(150).make().py16();
+        ).p(context.isMobile ? 0 : 16),
+      )
+    ];
+    return VxBox(
+      child: context.isMobile
+          ? Row(
+              children: children2,
+            )
+          : Column(
+              children: children2,
+            ),
+    ).color(context.cardColor).rounded.square(150).make().py16();
   }
 }
 
